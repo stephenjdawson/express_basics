@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/stephenjdawson/express_basics#readme",
   "dependencies": {
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
     "nodemon": "^1.12.1",
     "pug": "^2.0.0-rc.4"

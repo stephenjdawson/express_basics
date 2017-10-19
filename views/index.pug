@@ -1,12 +1,8 @@
-doctype
-html(lang='en')
-  head
-    meta(charset='utf-8')
-    title Flash Cards
-  body
-    header
-      h1 Flash Cards
-    section#content
-      h2 Welcome, student!
-    footer
-      p This is a paragraph This is a paragraphThis is a paragraph.
+extends layout.pug
+
+block content
+  section#content
+    if name
+      h2 Welcome, #{name}!
+      form(action='/goodbye', method='POST')
+        button(type='submit') Goodbye

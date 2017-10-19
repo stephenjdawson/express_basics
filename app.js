@@ -1,27 +1,32 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
-const names = [
-  'Stephen Dawson',
-  'Bob Frank',
-  'Joe Blow',
-  'Henry Green',
-  'Thaddius Blue'
-];
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(cookieParser());
 
 app.set('view engine', 'pug');
 
-app.get('/', function(req, res){
-  res.render('index');
+
+
+const mainRoutes = require('./routes/index');
+const cardRoutes = require('./routes/cards');
+
+app.use(mainRoutes);
+app.use('/cards', cardRoutes);
+
+app.use(function(req, res, next){
+  const err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
 
-app.get('/cards', function(req, res){
-  res.render('card', {prompt: "Who is buried in Grants tomb?", hint: "Whose tomb is it?"});
-});
-
-app.get('/sandbox', function(req, res){
-  res.render('sandbox');
+app.use(function(err, req, res, next){
+  res.locals.error = err;
+  res.status(err.status);
+  res.render('error', err);
 });
 
 app.listen(process.env.PORT || 3000, function(){
