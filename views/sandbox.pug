@@ -11,10 +11,21 @@ html(lang='en')
           tr
             th First Name 
             th Last Name
+          -
+              const names = [
+              'Stephen Dawson',
+              'Bob Frank',
+              'Joe Blow',
+              'Henry Green',
+              'Thaddius Blue'
+              ];
           each name in names
+            - 
+              var firstName = name.substr(0,name.indexOf(' '));
+              var lastName = name.substr(name.indexOf(' ')+1);
             tr
-              td= name
-              td= name
+              td= firstName
+              td= lastName
       footer
         .container
           p

@@ -21,7 +21,7 @@ app.get('/cards', function(req, res){
 });
 
 app.get('/sandbox', function(req, res){
-  res.render('sandbox', {names: names});
+  res.render('sandbox');
 });
 
 app.listen(process.env.PORT || 3000, function(){
