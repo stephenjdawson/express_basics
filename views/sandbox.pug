@@ -1,0 +1,24 @@
+doctype
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title Sandbox
+  body
+    header
+      h1 You're in the sandbox mofo
+      section#table
+        table
+          tr
+            th First Name 
+            th Last Name
+          each name in names
+            tr
+              td= name
+              td= name
+      footer
+        .container
+          p
+          | &copy; 2017 |
+          i.fa.fa-github(aria-hidden='true') &nbsp;
+          a(href='#') View Source
+              
